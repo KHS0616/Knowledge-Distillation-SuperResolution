@@ -1,6 +1,5 @@
 import torch
 
-
 def spatial_similarity(fm): 
     fm = fm.view(fm.size(0), fm.size(1), -1)
     norm_fm = fm / (torch.sqrt(torch.sum(torch.pow(fm,2), 1)).unsqueeze(1).expand(fm.shape) + 0.0000001)
@@ -8,7 +7,6 @@ def spatial_similarity(fm):
     s = s.unsqueeze(1)
     return s
 
-# 현재 안된는 상황 코드 분석 중
 def channel_similarity(fm):
     fm = fm.view(fm.size(0), fm.size(1), -1)
     norm_fm = fm / (torch.sqrt(torch.sum(torch.pow(fm,2), 2)).unsqueeze(2).expand(fm.shape) + 0.0000001)

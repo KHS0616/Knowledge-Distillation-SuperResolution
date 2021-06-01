@@ -167,25 +167,6 @@ class Loss(torch.nn.modules.loss._Loss):
 
         return loss_sum
 
-    # def save(self, apath):
-    #     torch.save(self.state_dict(), os.path.join(apath, 'loss.pt'))
-    #     torch.save(self.log, os.path.join(apath, 'loss_log.pt'))
-
-    # def load(self, apath, cpu=False):
-    #     if cpu:
-    #         kwargs = {'map_location': lambda storage, loc: storage}
-    #     else:
-    #         kwargs = {}
-
-    #     self.load_state_dict(torch.load(
-    #         os.path.join(apath, 'loss.pt'),
-    #         **kwargs
-    #     ))
-    #     self.log = torch.load(os.path.join(apath, 'loss_log.pt'))
-    #     for l in self.feature_loss_module:
-    #         if hasattr(l, 'scheduler'):
-    #             for _ in range(len(self.log)): l.scheduler.step()
-
 class FeatureLoss(torch.nn.Module):
     """ Feature Loss 클래스 """
     def __init__(self, loss=torch.nn.L1Loss()):
